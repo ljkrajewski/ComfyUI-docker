@@ -12,9 +12,10 @@ RUN apt update && \
 
 ## Install dependencies
 WORKDIR $COMFYDIR
-RUN pip3 install accelerate && \
+RUN pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121 --extra-index-url https://download.pytorch.org/whl/cu118 --extra-index-url https://download.pytorch.org/whl/cu117  && \
+    pip3 install accelerate && \
     pip3 install einops transformers>=4.25.1 safetensors>=0.3.0 aiohttp pyyaml Pillow scipy tqdm psutil  && \
-    pip3 install xformers!=0.0.18 torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  && \
+    pip3 install torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  && \
     pip3 install torchsde
 
 ## Install custom nodes
