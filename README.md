@@ -3,6 +3,7 @@ The goal of this project is to create a working docker image running ComfyUI cap
 
 ## Useful links
 - [comfyanonymous/ComfyUI [github]](https://github.com/comfyanonymous/ComfyUI)
+- [_nvidia/cuda_ docker image [dockerhub]](https://hub.docker.com/r/nvidia/cuda/)
 - [ComfyUI Command Line Arguments: Informational [reddit]](https://www.reddit.com/r/comfyui/comments/15jxydu/comfyui_command_line_arguments_informational/)
 - [Docker Build: A Beginner’s Guide to Building Docker Images](https://stackify.com/docker-build-a-beginners-guide-to-building-docker-images/)
 - [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
