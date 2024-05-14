@@ -23,7 +23,7 @@ WORKDIR $COMFYDIR/custom_nodes
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
 WORKDIR $COMFYDIR
 RUN pip3 install GitPython && \
-    python custom_nodes/ComfyUI-Manager/cm-cli.py restore-dependencies
+    python3 custom_nodes/ComfyUI-Manager/cm-cli.py restore-dependencies
 
 ## Download models
 WORKDIR $COMFYDIR/models
