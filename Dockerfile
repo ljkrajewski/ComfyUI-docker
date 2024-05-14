@@ -29,7 +29,8 @@ WORKDIR $COMFYDIR/models
 # checkpoints
 RUN wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -P checkpoints && \
     curl https://civitai.com/api/download/models/456194 -o checkpoints/Juggernaut_XL_RunDiffusion.safetensors -L && \
-    curl https://civitai.com/api/download/models/130072 -o checkpoints/RealisticVisionV60B1.safetensors -L
+    curl https://civitai.com/api/download/models/130072 -o checkpoints/RealisticVisionV60B1.safetensors -L && \
+    curl https://civitai.com/api/download/models/293240 -o checkpoints/RealismEngineSDXL_30VAE.safetensors -L
 # VAEs
 RUN wget -c https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors -P vae && \
     wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors -P vae
