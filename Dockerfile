@@ -74,5 +74,6 @@ RUN wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/Real
     wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth -P upscale_models
 
 ## Start ComfyUI
+WORKDIR $COMFYDIR
 EXPOSE $LISTENPORT
 CMD python3 main.py --listen --port $LISTENPORT
