@@ -77,5 +77,5 @@ RUN wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/Real
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
-EXPOSE $LISTENPORT
+EXPOSE $LISTENPORT   # Remember to use the '-P' flag with your 'docker run' command.
 CMD python3 main.py --listen --port $LISTENPORT
