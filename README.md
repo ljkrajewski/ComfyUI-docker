@@ -3,7 +3,7 @@ The goal of this project is to create a working docker image running ComfyUI cap
 
 ## Useful links
 - [comfyanonymous/ComfyUI [github]](https://github.com/comfyanonymous/ComfyUI)
-- [ComfyUI Command Line Arguments: Informational [reddit]](https://www.reddit.com/r/comfyui/comments/15jxydu/comfyui_command_line_arguments_informational/))
+- [ComfyUI Command Line Arguments: Informational [reddit]](https://www.reddit.com/r/comfyui/comments/15jxydu/comfyui_command_line_arguments_informational/)
 - [Docker Build: A Beginner’s Guide to Building Docker Images](https://stackify.com/docker-build-a-beginners-guide-to-building-docker-images/)
 - [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
 - [comfyui_colab_with_manager.ipynb [Google Colab]](https://colab.research.google.com/github/ltdrdata/ComfyUI-Manager/blob/main/notebooks/comfyui_colab_with_manager.ipynb)
