@@ -5,6 +5,7 @@ ARG COMFYDIR=$BASEDIR/ComfyUI
 ARG LISTENPORT=8188
 
 WORKDIR $BASEDIR
+COPY models.sha256 .   #For future download verification.
 RUN apt update && \
     apt upgrade -y && \
     apt install git curl wget pip3 -y && \
@@ -76,6 +77,10 @@ WORKDIR $COMFYDIR/models/upscale_models
 RUN wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth && \
     wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth && \
     wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth
+
+# Verify Downloads
+WORKDIR $COMFYDIR/models
+RUN sha256sum -c $BASEDIR/models.sha256
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
