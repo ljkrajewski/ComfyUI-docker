@@ -1,12 +1,9 @@
-WORKDIR $COMFYDIR/models/checkpoints
-RUN wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors && \
-D91D35736D8F2BE038F760A9B0009A771ECF0A417E9B38C244A84EA4CB9C0C45  checkpoints/Juggernaut_XL_RunDiffusion.safetensors
-    curl https://civitai.com/api/download/models/130072 -o RealisticVisionV60B1.safetensors -L && \
-    curl https://civitai.com/api/download/models/293240 -o RealismEngineSDXL_30VAE.safetensors -L
-WORKDIR $COMFYDIR/models/vae
-RUN wget -c https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors
-WORKDIR $COMFYDIR/models/loras
-RUN wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors
+31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b    checkpoints/sd_xl_base_1.0.safetensors
+D91D35736D8F2BE038F760A9B0009A771ECF0A417E9B38C244A84EA4CB9C0C45    checkpoints/Juggernaut_XL_RunDiffusion.safetensors
+FE7578CB5EE0BE63AA15BAA894AB5D1751FF9B5B25EF611D5FAFB2186D930C30    checkpoints/RealisticVisionV60B1.safetensors
+2D5AF237268A912185C0D69EE179B4B1377DD25B01C638FF08F9F6665E68B410    checkpoints/RealismEngineSDXL_30VAE.safetensors
+735e4c3a447a3255760d7f86845f09f937809baa529c17370d83e4c3758f3c75    vae/vae-ft-mse-840000-ema-pruned.safetensors
+4852686128f953d0277d0793e2f0335352f96a919c9c16a09787d77f55cbdf6f    loras/sd_xl_offset_example-lora_1.0.safetensors
 WORKDIR $COMFYDIR/models/controlnet
 RUN wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors && \
     wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors && \
