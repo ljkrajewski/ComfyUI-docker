@@ -5,20 +5,20 @@ FE7578CB5EE0BE63AA15BAA894AB5D1751FF9B5B25EF611D5FAFB2186D930C30    checkpoints/
 735e4c3a447a3255760d7f86845f09f937809baa529c17370d83e4c3758f3c75    vae/vae-ft-mse-840000-ema-pruned.safetensors
 4852686128f953d0277d0793e2f0335352f96a919c9c16a09787d77f55cbdf6f    loras/sd_xl_offset_example-lora_1.0.safetensors
 WORKDIR $COMFYDIR/models/controlnet
-RUN wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_canny_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_lineart_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_openpose_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_seg_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_softedge_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors && \
-    wget -c https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors
+controlnet/control_v11e_sd15_ip2p_fp16.safetensors
+controlnet/control_v11e_sd15_shuffle_fp16.safetensors
+controlnet/control_v11p_sd15_canny_fp16.safetensors
+controlnet/control_v11f1p_sd15_depth_fp16.safetensors
+controlnet/control_v11p_sd15_inpaint_fp16.safetensors
+controlnet/control_v11p_sd15_lineart_fp16.safetensors
+controlnet/control_v11p_sd15_mlsd_fp16.safetensors
+controlnet/control_v11p_sd15_normalbae_fp16.safetensors
+controlnet/control_v11p_sd15_openpose_fp16.safetensors
+controlnet/control_v11p_sd15_scribble_fp16.safetensors
+controlnet/control_v11p_sd15_seg_fp16.safetensors
+controlnet/control_v11p_sd15_softedge_fp16.safetensors
+controlnet/control_v11p_sd15s2_lineart_anime_fp16.safetensors
+controlnet/control_v11u_sd15_tile_fp16.safetensors
 RUN wget -c https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_depth_sd14v1.pth && \
     wget -c https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_seg_sd14v1.pth && \
     wget -c https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_sketch_sd14v1.pth && \
