@@ -29,7 +29,6 @@ f8d8027cbeae188dcae57b7475243b7dec20f2620c3c0fe7778319c56bf1ec6b	controlnet/t2ia
 559d2468951bf254c13bacd9c5d05d01ad67b060f6a73e8131d26ebf459c1c79	controlnet/control-lora-depth-rank256.safetensors
 b0bf3c163b6f578b3a73e9cf61c3e4219ae9c2a06903663205d1251cf2498925	controlnet/control-lora-recolor-rank256.safetensors
 cf741a672fc3f753956260cb16101250f16c3c5bb3690a3d736bef66eafa7515	controlnet/control-lora-sketch-rank256.safetensors
-WORKDIR $COMFYDIR/models/upscale_models
-RUN wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth && \
-    wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth && \
-    wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth
+#???????????????????????????????????????????????????????????????	upscale_models/RealESRGAN_x4plus.pth
+c830d067d54fc767b9543a8432f36d91bc2de313584e8bbfe4ac26a47339e899	upscale_models/RealESRGAN_x2.pth
+aa00f09ad753d88576b21ed977e97d634976377031b178acc3b5b238df463400	upscale_models/RealESRGAN_x4.pth
