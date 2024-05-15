@@ -5,7 +5,6 @@ ARG COMFYDIR=$BASEDIR/ComfyUI
 ARG LISTENPORT=8188
 
 WORKDIR $BASEDIR
-COPY models.sha256 .   #For future download verification.
 RUN apt update && \
     apt upgrade -y && \
     apt install git curl wget pip3 -y && \
@@ -79,10 +78,11 @@ RUN wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/Real
     wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth
 
 # Verify Downloads
+COPY models.sha256 $BASEDIR
 WORKDIR $COMFYDIR/models
 RUN sha256sum -c $BASEDIR/models.sha256
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
-EXPOSE $LISTENPORT   # Remember to use the '-p 80:8818' flag with your 'docker run' command.
+EXPOSE $LISTENPORT   # Remember to use the '-p 80:8818' or '-P' flag with your 'docker run' command.
 CMD python3 main.py --listen --port $LISTENPORT
