@@ -11,6 +11,10 @@ RUN apt update && \
     apt install git curl wget python3 python3-pip -y && \
     git clone https://github.com/comfyanonymous/ComfyUI
 
+## Copy models
+WORKDIR $COMFYDIR
+COPY models models
+
 ## Install dependencies
 WORKDIR $COMFYDIR
 RUN pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121 --extra-index-url https://download.pytorch.org/whl/cu118 --extra-index-url https://download.pytorch.org/whl/cu117  && \
@@ -19,12 +23,6 @@ RUN pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://
     pip3 install torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  && \
     pip3 install torchsde
    
-### --- Tested to here ---
-
-## Copy models
-WORKDIR $COMFYDIR
-COPY models models
-
 ## Install custom nodes
 # ltdrdata/ComfyUI-Manager
 WORKDIR $COMFYDIR/custom_nodes
