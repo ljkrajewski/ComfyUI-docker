@@ -3,6 +3,7 @@
 # It should be ran _before_ running the docker build.
 
 set PWD=`pwd`
+set CIVITAI_API=`cat ~/.ssh/civitai_apikey.txt`
 
 function dlFromCivitAI {
 #Usage: dlFromCivitAI '348913' 'JuggernautXL_v9-RunDiffusionPhoto2.safetensors'
@@ -13,13 +14,13 @@ function dlFromCivitAI {
 # To get a CivitAI API key:  https://education.civitai.com/civitais-guide-to-downloading-via-api/#step-by-step
   URL="https://civitai.com/api/download/models/$1"
   # Forcibly obtain filename via returned header truncated plain get
-  FILENAME=$(curl -s -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" -i -L --range '0-1' "$URL" | grep -a Content-Disposition | sed -n 's/.*filename=["]*\([^"]*\)["]*.*/\1/p')
+  FILENAME=$(curl -s -H "Authorization: Bearer $CIVITAI_API" -i -L --range '0-1' "$URL" | grep -a Content-Disposition | sed -n 's/.*filename=["]*\([^"]*\)["]*.*/\1/p')
   if [ -f "$FILENAME" ]; then
     echo "!!!! File $FILENAME already exists. Continuing via -L -C - -O \$filename:"
-    curl -L -C - -o $FILENAME --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$URL"
+    curl -L -C - -o $FILENAME --retry 4 -H "Authorization: Bearer $CIVITAI_API" "$URL"
   else
     echo "========= Downloading into $FILENAME:"
-    curl -JLO --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$URL"
+    curl -JLO --retry 4 -H "Authorization: Bearer $CIVITAI_API" "$URL"
   fi
 }
 
