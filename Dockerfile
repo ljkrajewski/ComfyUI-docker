@@ -22,7 +22,7 @@ RUN pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://
 ### --- Tested to here ---
 
 ## Copy models
-WORKDIR $COMFYDIR/models
+WORKDIR $COMFYDIR
 COPY models models
 
 ## Install custom nodes
