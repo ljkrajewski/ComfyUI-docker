@@ -3,7 +3,8 @@ The goal of this project is to create a working docker image running ComfyUI cap
 
 ## Builing the docker image
 1. Run *download_models.sh* to download the models and verify their integrity.
-2. ```$ docker build <some other stuff here>```
+2. Build the image. ```docker build . -t yourusername/example-node-app```
+3. Run the image. ```docker run -p8188:8188 yourusername/example-node-app```
 
 ## Useful links
 - [comfyanonymous/ComfyUI [github]](https://github.com/comfyanonymous/ComfyUI)
