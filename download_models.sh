@@ -8,21 +8,19 @@ function dlFromCivitAI {
 #Usage: dlFromCivitAI '348913' 'JuggernautXL_v9-RunDiffusionPhoto2.safetensors'
 #  [ ! -f $2 ] && curl https://civitai.com/api/download/models/$1 -o $2 -L
 #}
-#Usage: dlFromCivitAI 'https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16'
+#Usage: dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16'
 # https://www.reddit.com/r/StableDiffusion/comments/1bkc428/bash_script_to_seamlessly_download_and_resume/
 # To get a CivitAI API key:  https://education.civitai.com/civitais-guide-to-downloading-via-api/#step-by-step
-  for i in "$@"; do
-    # Forcibly obtain filename via returned header truncated plain get
-    FILENAME=$(curl -s -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" -i -L --range '0-1' "$i" | grep -a Content-Disposition | sed -n 's/.*filename=["]*\([^"]*\)["]*.*/\1/p')
-  
-    if [ -f "$FILENAME" ]; then
-      echo "!!!! File $FILENAME already exists. Continuing via -L -C - -O \$filename:"
-      curl -L -C - -o $FILENAME --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$i"
-    else
-      echo "========= Downloading into $FILENAME:"
-      curl -JLO --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$i"
-    fi
-  done
+  URL="https://civitai.com/api/download/models/$1"
+  # Forcibly obtain filename via returned header truncated plain get
+  FILENAME=$(curl -s -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" -i -L --range '0-1' "$URL" | grep -a Content-Disposition | sed -n 's/.*filename=["]*\([^"]*\)["]*.*/\1/p')
+  if [ -f "$FILENAME" ]; then
+    echo "!!!! File $FILENAME already exists. Continuing via -L -C - -O \$filename:"
+    curl -L -C - -o $FILENAME --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$URL"
+  else
+    echo "========= Downloading into $FILENAME:"
+    curl -JLO --retry 4 -H "Authorization: Bearer $(cat ~/civitai_apikey.txt)" "$URL"
+  fi
 }
 
 function dlFromHuggingFace {
@@ -34,9 +32,9 @@ function dlFromHuggingFace {
 [ ! -d $PWD/models/checkpoints ] && mkdir -p $PWD/models/checkpoints
 cd $PWD/models/checkpoints
 dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
-dlFromCivitAI '456194' 'Juggernaut_XL_RunDiffusion.safetensors'
-dlFromCivitAI '130072' 'RealisticVisionV60B1.safetensors'
-dlFromCivitAI '293240' 'RealismEngineSDXL_30VAE.safetensors'
+dlFromCivitAI '456194' #Juggernaut_XL_RunDiffusion.safetensors
+dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16' #RealisticVisionV60B1.safetensors
+dlFromCivitAI '293240' #RealismEngineSDXL_30VAE.safetensors
 
 [ ! -d $PWD/models/vae ] && mkdir -p $PWD/models/vae
 cd $PWD/models/vae
@@ -45,6 +43,7 @@ dlFromHuggingFace 'stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-84
 [ ! -d $PWD/models/loras ] && mkdir -p $PWD/models/loras
 cd $PWD/models/loras
 dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
+dlFromCivitAI '471794'   #Hands XL
 
 [ ! -d $PWD/models/controlnet ] && mkdir -p $PWD/models/controlnet
 cd $PWD/models/controlnet
