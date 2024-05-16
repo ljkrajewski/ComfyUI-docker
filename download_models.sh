@@ -5,6 +5,12 @@
 set PWD=`pwd`
 set CIVITAI_API=`cat ~/.ssh/civitai_apikey.txt`
 
+function dlFromWeb {
+#Usage: dlFromWeb 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
+  file="${1##*/}"
+  [ ! -f $file ] && wget -c $1
+}
+
 function dlFromCivitAI {
 #Usage: dlFromCivitAI '348913' 'JuggernautXL_v9-RunDiffusionPhoto2.safetensors'
 #  [ ! -f $2 ] && curl https://civitai.com/api/download/models/$1 -o $2 -L
@@ -24,66 +30,60 @@ function dlFromCivitAI {
   fi
 }
 
-function dlFromHuggingFace {
-#Usage: dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
-  file="${1##*/}"
-  [ ! -f $file ] && wget -c https://huggingface.co/$1
-}
-
 [ ! -d $PWD/models/checkpoints ] && mkdir -p $PWD/models/checkpoints
 cd $PWD/models/checkpoints
-dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
 dlFromCivitAI '456194' #Juggernaut XL (Juggernaut_X_RunDiffusion) -- https://civitai.com/models/133005?modelVersionId=456194
 dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16' #Realistic Vision V6.0 B1 (V5.1 [VAE]) -- https://civitai.com/models/4201?modelVersionId=130072
 dlFromCivitAI '293240' #Realism Engine SDXL (v3.0 VAE) -- https://civitai.com/models/152525?modelVersionId=293240
 
 [ ! -d $PWD/models/vae ] && mkdir -p $PWD/models/vae
 cd $PWD/models/vae
-dlFromHuggingFace 'stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
 
 [ ! -d $PWD/models/loras ] && mkdir -p $PWD/models/loras
 cd $PWD/models/loras
-dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
 dlFromCivitAI '471794'   #Hands XL + SD 1.5 (Hands v3) -- https://civitai.com/models/200255?modelVersionId=471794
 
 [ ! -d $PWD/models/controlnet ] && mkdir -p $PWD/models/controlnet
 cd $PWD/models/controlnet
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_canny_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_lineart_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_openpose_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_seg_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_softedge_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors'
-dlFromHuggingFace 'comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_canny_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_lineart_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_openpose_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_seg_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_softedge_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors'
+dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors'
 
 # T2I-Adapter
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_depth_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_seg_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_sketch_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_keypose_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_openpose_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_color_sd14v1.pth'
-dlFromHuggingFace 'TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_canny_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_depth_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_seg_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_sketch_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_keypose_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_openpose_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_color_sd14v1.pth'
+dlFromWeb 'https://huggingface.co/TencentARC/T2I-Adapter/resolve/main/models/t2iadapter_canny_sd14v1.pth'
 
 # ControlNet SDXL
-dlFromHuggingFace 'stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-canny-rank256.safetensors'
-dlFromHuggingFace 'stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-depth-rank256.safetensors'
-dlFromHuggingFace 'stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-recolor-rank256.safetensors'
-dlFromHuggingFace 'stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-sketch-rank256.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-canny-rank256.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-depth-rank256.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-recolor-rank256.safetensors'
+dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-sketch-rank256.safetensors'
 
 # ESRGAN upscale model
 [ ! -d $PWD/models/upscale_models ] && mkdir -p $PWD/models/upscale_models
 cd $PWD/models/upscale_models
-[ ! -f RealESRGAN_x4plus.pth ] && wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth
-dlFromHuggingFace 'sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth'
-dlFromHuggingFace 'sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth'
+dlFromWeb 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
+dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth'
+dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth'
 
 # Verify Downloads
 cd $PWD/models/
