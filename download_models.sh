@@ -33,9 +33,9 @@ function dlFromHuggingFace {
 [ ! -d $PWD/models/checkpoints ] && mkdir -p $PWD/models/checkpoints
 cd $PWD/models/checkpoints
 dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
-dlFromCivitAI '456194' #Juggernaut_XL_RunDiffusion.safetensors
-dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16' #RealisticVisionV60B1.safetensors
-dlFromCivitAI '293240' #RealismEngineSDXL_30VAE.safetensors
+dlFromCivitAI '456194' #Juggernaut XL (Juggernaut_X_RunDiffusion) -- https://civitai.com/models/133005?modelVersionId=456194
+dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16' #Realistic Vision V6.0 B1 (V5.1 [VAE]) -- https://civitai.com/models/4201?modelVersionId=130072
+dlFromCivitAI '293240' #Realism Engine SDXL (v3.0 VAE) -- https://civitai.com/models/152525?modelVersionId=293240
 
 [ ! -d $PWD/models/vae ] && mkdir -p $PWD/models/vae
 cd $PWD/models/vae
@@ -44,7 +44,7 @@ dlFromHuggingFace 'stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-84
 [ ! -d $PWD/models/loras ] && mkdir -p $PWD/models/loras
 cd $PWD/models/loras
 dlFromHuggingFace 'stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
-dlFromCivitAI '471794'   #Hands XL
+dlFromCivitAI '471794'   #Hands XL + SD 1.5 (Hands v3) -- https://civitai.com/models/200255?modelVersionId=471794
 
 [ ! -d $PWD/models/controlnet ] && mkdir -p $PWD/models/controlnet
 cd $PWD/models/controlnet
