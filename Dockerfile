@@ -4,6 +4,7 @@ ARG BASEDIR=/usr/src
 ARG COMFYDIR=$BASEDIR/ComfyUI
 ARG LISTENPORT=8188
 
+# Update image, install tools, & download ComfyUI from Github
 WORKDIR $BASEDIR
 RUN apt update && \
     apt upgrade -y && \
