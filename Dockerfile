@@ -7,7 +7,7 @@ ARG LISTENPORT=8188
 WORKDIR $BASEDIR
 RUN apt update && \
     apt upgrade -y && \
-    apt install git curl wget pip3 -y && \
+    apt install git curl wget python3 python3-pip -y && \
     git clone https://github.com/comfyanonymous/ComfyUI
 
 ## Install dependencies
@@ -22,8 +22,10 @@ RUN pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://
 WORKDIR $COMFYDIR/custom_nodes
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
 WORKDIR $COMFYDIR
-RUN pip3 install GitPython && \
+RUN pip3 install GitPython typer && \
     python3 custom_nodes/ComfyUI-Manager/cm-cli.py restore-dependencies
+    
+### --- Tested to here ---
 
 ## Download models
 # checkpoints
