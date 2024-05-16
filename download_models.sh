@@ -50,8 +50,8 @@ wget -c https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoR
 # ESRGAN upscale model
 mkdir -p ../upscale_models
 cd ../upscale_models
-wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth && \
-wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth && \
+wget -c https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth
+wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth
 wget -c https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth
 
 # Verify Downloads
