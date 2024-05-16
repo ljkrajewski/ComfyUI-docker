@@ -1,6 +1,10 @@
 # ComfyUI-docker
 The goal of this project is to create a working docker image running ComfyUI capable of running on shared computing services like RunPod with the nodes and models that I use.  It's not the goal to create an image for public consuption, but feel free to fork it and change it to fit your wants/needs/desires, but you're pretty much on your own (IOW, no support offered).
 
+## Builing the docker image
+1. Run *download_models.sh* to download the models and verify their integrity.
+2. ```$ docker build <some other stuff here>```
+
 ## Useful links
 - [comfyanonymous/ComfyUI [github]](https://github.com/comfyanonymous/ComfyUI)
 - [Setting Up NVIDIA CUDA Toolkit in a Docker Container on Debian/Ubuntu](https://linuxconfig.org/setting-up-nvidia-cuda-toolkit-in-a-docker-container-on-debian-ubuntu)
