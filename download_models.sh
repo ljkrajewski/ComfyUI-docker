@@ -2,8 +2,8 @@
 # This script downloads models used for the ComfyUI docker image and verifies their integrity.
 # It should be ran _before_ running the docker build.
 
-set PWD=`pwd`
-set CIVITAI_API=`cat ~/.ssh/civitai_apikey.txt`
+export set BASEDIR=`pwd`
+export set CIVITAI_API=`cat ~/.ssh/civitai.key`
 
 function dlFromWeb {
 #Usage: dlFromWeb 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
@@ -30,27 +30,27 @@ function dlFromCivitAI {
   fi
 }
 
-[ ! -d $PWD/models/checkpoints ] && mkdir -p $PWD/models/checkpoints
-cd $PWD/models/checkpoints
+[ ! -d $BASEDIR/models/checkpoints ] && mkdir -p $BASEDIR/models/checkpoints
+cd $BASEDIR/models/checkpoints
 dlFromWeb 'https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors'
 dlFromCivitAI '456194' #Juggernaut XL (Juggernaut_X_RunDiffusion) -- https://civitai.com/models/133005?modelVersionId=456194
 dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16' #Realistic Vision V6.0 B1 (V5.1 [VAE]) -- https://civitai.com/models/4201?modelVersionId=130072
 dlFromCivitAI '293240' #Realism Engine SDXL (v3.0 VAE) -- https://civitai.com/models/152525?modelVersionId=293240
 
-[ ! -d $PWD/models/vae ] && mkdir -p $PWD/models/vae
-cd $PWD/models/vae
+[ ! -d $BASEDIR/models/vae ] && mkdir -p $BASEDIR/models/vae
+cd $BASEDIR/models/vae
 dlFromWeb 'https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors'
 
-[ ! -d $PWD/models/loras ] && mkdir -p $PWD/models/loras
-cd $PWD/models/loras
+[ ! -d $BASEDIR/models/loras ] && mkdir -p $BASEDIR/models/loras
+cd $BASEDIR/models/loras
 dlFromWeb 'https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
 dlFromCivitAI '471794'   #Hands XL + SD 1.5 (Hands v3) -- https://civitai.com/models/200255?modelVersionId=471794
 dlFromCivitAI '192247'   #RealNylonFeets XL - Feet in nylon -- https://civitai.com/models/171114/realnylonfeets-xl-feet-in-nylon
 dlFromCivitAI '164714'   #RealPantyhose XL - Sheer Pantyhose (tan and black) -- https://civitai.com/models/147682/realpantyhose-xl-sheer-pantyhose-tan-and-black
 dlFromCivitAI '471781'   #Feet XL + SD 1.5 (Feet v3) -- https://civitai.com/models/200251?modelVersionId=471781
 
-[ ! -d $PWD/models/controlnet ] && mkdir -p $PWD/models/controlnet
-cd $PWD/models/controlnet
+[ ! -d $BASEDIR/models/controlnet ] && mkdir -p $BASEDIR/models/controlnet
+cd $BASEDIR/models/controlnet
 dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors'
 dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors'
 dlFromWeb 'https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_canny_fp16.safetensors'
@@ -82,12 +82,12 @@ dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-
 dlFromWeb 'https://huggingface.co/stabilityai/control-lora/resolve/main/control-LoRAs-rank256/control-lora-sketch-rank256.safetensors'
 
 # ESRGAN upscale model
-[ ! -d $PWD/models/upscale_models ] && mkdir -p $PWD/models/upscale_models
-cd $PWD/models/upscale_models
+[ ! -d $BASEDIR/models/upscale_models ] && mkdir -p $BASEDIR/models/upscale_models
+cd $BASEDIR/models/upscale_models
 dlFromWeb 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
 dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x2.pth'
 dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth'
 
 # Verify Downloads
-#cd $PWD/models/
+#cd $BASEDIR/models/
 #sha256sum -c models.sha256
