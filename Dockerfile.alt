@@ -10,6 +10,8 @@ WORKDIR $BASEDIR
 RUN apt update && \
     apt upgrade -y && \
     apt install git curl wget python3 python3-pip -y && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip && \
     git clone https://github.com/comfyanonymous/ComfyUI
 WORKDIR $COMFYDIR/custom_nodes
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
@@ -19,9 +21,9 @@ WORKDIR $COMFYDIR
 COPY models models
 
 ## Install dependencies
-RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121 && \
-    pip3 install -r requirements.txt && \
-    pip3 install -r custom_nodes/ComfyUI-Manager/requirements.txt
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121 && \
+    pip install -r requirements.txt && \
+    pip install -r custom_nodes/ComfyUI-Manager/requirements.txt
 
 ## Install custom nodes
 # TO DO
@@ -29,4 +31,4 @@ RUN pip3 install torch torchvision torchaudio --extra-index-url https://download
 ## Start ComfyUI
 WORKDIR $COMFYDIR
 EXPOSE $LISTENPORT   # Remember to use the '-p 80:8818' or '-P' flag with your 'docker run' command.
-CMD python3 main.py --preview-method auto --listen --port $LISTENPORT
+CMD python main.py --preview-method auto --listen --port $LISTENPORT
