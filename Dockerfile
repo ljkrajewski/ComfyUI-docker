@@ -26,18 +26,7 @@ RUN pip3 install --upgrade torch torchvision torchaudio && \
 #    pip3 install torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  && \
    
 ## Install custom nodes
-# ltdrdata/ComfyUI-Manager
-WORKDIR $COMFYDIR/custom_nodes
-RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
-WORKDIR $COMFYDIR
-RUN pip3 install GitPython typer matplotlib && \
-    python3 custom_nodes/ComfyUI-Manager/cm-cli.py restore-dependencies
-# Fannovel16/comfy_controlnet_preprocessors
-WORKDIR $COMFYDIR/custom_nodes
-RUN git clone https://github.com/Fannovel16/comfy_controlnet_preprocessors
-WORKDIR $COMFYDIR/custom_nodes/comfy_controlnet_preprocessors
-#RUN sed -i 's/cu117/cu121/g' install.py && \
-RUN python3 install.py
+# TO DO
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
