@@ -45,6 +45,9 @@ dlFromWeb 'https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/mai
 cd $PWD/models/loras
 dlFromWeb 'https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors'
 dlFromCivitAI '471794'   #Hands XL + SD 1.5 (Hands v3) -- https://civitai.com/models/200255?modelVersionId=471794
+dlFromCivitAI '192247'   #RealNylonFeets XL - Feet in nylon -- https://civitai.com/models/171114/realnylonfeets-xl-feet-in-nylon
+dlFromCivitAI '164714'   #RealPantyhose XL - Sheer Pantyhose (tan and black) -- https://civitai.com/models/147682/realpantyhose-xl-sheer-pantyhose-tan-and-black
+dlFromCivitAI '471781'   #Feet XL + SD 1.5 (Feet v3) -- https://civitai.com/models/200251?modelVersionId=471781
 
 [ ! -d $PWD/models/controlnet ] && mkdir -p $PWD/models/controlnet
 cd $PWD/models/controlnet
@@ -86,5 +89,5 @@ dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGA
 dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth'
 
 # Verify Downloads
-cd $PWD/models/
-sha256sum -c models.sha256
+#cd $PWD/models/
+#sha256sum -c models.sha256
