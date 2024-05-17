@@ -4,6 +4,7 @@
 
 export set BASEDIR=`pwd`
 export set CIVITAI_API=`cat ~/.ssh/civitai.key`
+# To get a CivitAI API key:  https://education.civitai.com/civitais-guide-to-downloading-via-api/#step-by-step
 
 function dlFromWeb {
 #Usage: dlFromWeb 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
@@ -12,12 +13,8 @@ function dlFromWeb {
 }
 
 function dlFromCivitAI {
-#Usage: dlFromCivitAI '348913' 'JuggernautXL_v9-RunDiffusionPhoto2.safetensors'
-#  [ ! -f $2 ] && curl https://civitai.com/api/download/models/$1 -o $2 -L
-#}
 #Usage: dlFromCivitAI '130072?type=Model&format=SafeTensor&size=pruned&fp=fp16'
 # https://www.reddit.com/r/StableDiffusion/comments/1bkc428/bash_script_to_seamlessly_download_and_resume/
-# To get a CivitAI API key:  https://education.civitai.com/civitais-guide-to-downloading-via-api/#step-by-step
   URL="https://civitai.com/api/download/models/$1"
   # Forcibly obtain filename via returned header truncated plain get
   FILENAME=$(curl -s -H "Authorization: Bearer $CIVITAI_API" -i -L --range '0-1' "$URL" | grep -a Content-Disposition | sed -n 's/.*filename=["]*\([^"]*\)["]*.*/\1/p')
