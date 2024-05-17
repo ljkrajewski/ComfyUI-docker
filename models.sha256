@@ -5,9 +5,9 @@ D91D35736D8F2BE038F760A9B0009A771ECF0A417E9B38C244A84EA4CB9C0C45  ./models/check
 735e4c3a447a3255760d7f86845f09f937809baa529c17370d83e4c3758f3c75  ./models/vae/vae-ft-mse-840000-ema-pruned.safetensors
 4852686128f953d0277d0793e2f0335352f96a919c9c16a09787d77f55cbdf6f  ./models/loras/sd_xl_offset_example-lora_1.0.safetensors
 2AD54BFCAC62F2D8F0BB90F9F25B82AAE864A24556ABA0F781A3D7BA82B8D426  ./models/loras/hand 4.safetensors
-80e28a410fe4b1b5d7ec5ee96517e8c2  ./models/loras/RealNylonFeets_XL.safetensors
-6a67479f48865d288959c7bac6172b9b  ./models/loras/RealPantyhose_XL.safetensors
-290082257f281f541a77ce4cfe22c96f  ./models/loras/feet v3.safetensors
+----------------------------------------------------------------  ./models/loras/RealNylonFeets_XL.safetensors
+----------------------------------------------------------------  ./models/loras/RealPantyhose_XL.safetensors
+----------------------------------------------------------------  ./models/loras/feet v3.safetensors
 11e7dbe52a73f66e701c1faa77b8a2cb0ee3abd721e1cae31123f5b299093435  ./models/controlnet/control_v11e_sd15_ip2p_fp16.safetensors
 8cc77ae071888abefd6e80bafce3d2574f9f6f8aac7ab205db98fb12a53c1132  ./models/controlnet/control_v11e_sd15_shuffle_fp16.safetensors
 8932b66e15aae835b3490dbf989f56c253104cee08a88bf21283762f557c9f10  ./models/controlnet/control_v11p_sd15_canny_fp16.safetensors
@@ -22,19 +22,18 @@ acd4dd3df2da2f1f2b9dd00f4504cc0d98b20afb608e25f1789a95c0ccdba14a  ./models/contr
 e78fea5b4599fec2ecd7e3f14b171feb290b88200c95d569ec0ff59a19bc3478  ./models/controlnet/control_v11p_sd15_softedge_fp16.safetensors
 067bf845109afdd1049bd9553d44faed1ad53691bd6b5ac9ee31c87466ef7c27  ./models/controlnet/control_v11p_sd15s2_lineart_anime_fp16.safetensors
 387ac74221099dcd163b3a76060d0fae441301e169646f186875f620b1287a8f  ./models/controlnet/control_v11u_sd15_tile_fp16.safetensors
+3fb35d666889f622f7c499c5c11a8e94dabd9231029a13a5efd736364e76a987  ./models/controlnet/t2iadapter_canny_sd14v1.pth
+e006de134c9db86d1d44e6f13783e0846a78879afa3bd6f73feb3d7f6a5715b1  ./models/controlnet/t2iadapter_sketch_sd14v1.pth
+f8d8027cbeae188dcae57b7475243b7dec20f2620c3c0fe7778319c56bf1ec6b  ./models/controlnet/t2iadapter_openpose_sd14v1.pth
+c01a17ecd473e3e375cea152c1e4135274f7113a495be35909b497d65b87713a  ./models/controlnet/t2iadapter_seg_sd14v1.pth
+edca0cef5eb32feba66c8e0524d996204b87a19eace640d27826d04229d17d7e  ./models/controlnet/t2iadapter_keypose_sd14v1.pth
+6adc765d71cbd07567688a9320add25db9a0758eef2e3b6897cbca71e1cf9d36  ./models/controlnet/t2iadapter_depth_sd14v1.pth
+3ea46a3d2f26023179a8daccb2259a198e992044570d2f9bd18e412d479fd591  ./models/controlnet/t2iadapter_color_sd14v1.pth
+cf741a672fc3f753956260cb16101250f16c3c5bb3690a3d736bef66eafa7515  ./models/controlnet/control-lora-sketch-rank256.safetensors
+b0bf3c163b6f578b3a73e9cf61c3e4219ae9c2a06903663205d1251cf2498925  ./models/controlnet/control-lora-recolor-rank256.safetensors
+559d2468951bf254c13bacd9c5d05d01ad67b060f6a73e8131d26ebf459c1c79  ./models/controlnet/control-lora-depth-rank256.safetensors
+21f79f7368eff07f57bcd507ca91c0fc89070d7da182960ff24ed1d58310c3a7  ./models/controlnet/control-lora-canny-rank256.safetensors
+----------------------------------------------------------------  ./models/upscale_models/RealESRGAN_x4plus.pth
+c830d067d54fc767b9543a8432f36d91bc2de313584e8bbfe4ac26a47339e899  ./models/upscale_models/RealESRGAN_x2.pth
+aa00f09ad753d88576b21ed977e97d634976377031b178acc3b5b238df463400  ./models/upscale_models/RealESRGAN_x4.pth
 
-1d648948217255880c1dfe7a3e35a952  ./models/controlnet/control-lora-sketch-rank256.safetensors
-51781cda4bcf2f71470d2daa26b72859  ./models/controlnet/control-lora-recolor-rank256.safetensors
-1d5f6f8ca75ad16a2eafc753c7cbb353  ./models/controlnet/control-lora-depth-rank256.safetensors
-66cc106b2839f812fab050348cad4bca  ./models/controlnet/control-lora-canny-rank256.safetensors
-
-78ad8a1126d038d70967009f4f6f78d1  ./models/upscale_models/RealESRGAN_x4.pth
-99ec365d4afad750833258a1a24f44ca  ./models/upscale_models/RealESRGAN_x4plus.pth
-256d67db03381bde0ab8b4373920127a  ./models/upscale_models/RealESRGAN_x2.pth
-b3a2b2583eb5a8e4e6cdc8d24dfcaeab  ./models/controlnet/t2iadapter_canny_sd14v1.pth
-9a7c8161ade1bd1cccb336e07e3920e4  ./models/controlnet/t2iadapter_sketch_sd14v1.pth
-cf75350af8c65801822dcf670ec6aa33  ./models/controlnet/t2iadapter_openpose_sd14v1.pth
-c6e6d6821f8508b86cf944559972b0c1  ./models/controlnet/t2iadapter_seg_sd14v1.pth
-b8bbd774a45db9cf27f976ca2737eae6  ./models/controlnet/t2iadapter_keypose_sd14v1.pth
-fb7d0a2e297298b0c7e587c5a7194dee  ./models/controlnet/t2iadapter_depth_sd14v1.pth
-6fbead533f31016cd628c7d4f467ead1  ./models/controlnet/t2iadapter_color_sd14v1.pth
