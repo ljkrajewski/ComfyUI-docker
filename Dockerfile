@@ -24,8 +24,25 @@ RUN pip install torch torchvision torchaudio --extra-index-url https://download.
     pip install -r requirements.txt && \
     pip install -r custom_nodes/ComfyUI-Manager/requirements.txt
 
-## Install custom nodes
-# TO DO
+## TO DO
+# Needed custom notes:
+#    Anything Everywhere
+#    ImpactSegsAndMask
+#    SAMLoader
+#    UltralyticsDetectorProvider
+#    SAMDetectorCombined
+#    BboxDetectorSEGS
+#    Anything Everywhere3
+#    GetImageSize
+#    Prompts Everywhere
+#    Anything Everywhere?
+#    IPAdapterModelLoader
+#    PrepImageForClipVision
+#    DWPreprocessor
+#    IPAdapterApply
+#    DetailerForEachDebug
+#    NNLatentUpscale
+#    CR Model Input Switch
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
