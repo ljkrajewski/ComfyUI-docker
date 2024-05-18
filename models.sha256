@@ -5,9 +5,9 @@ D91D35736D8F2BE038F760A9B0009A771ECF0A417E9B38C244A84EA4CB9C0C45  ./models/check
 735e4c3a447a3255760d7f86845f09f937809baa529c17370d83e4c3758f3c75  ./models/vae/vae-ft-mse-840000-ema-pruned.safetensors
 4852686128f953d0277d0793e2f0335352f96a919c9c16a09787d77f55cbdf6f  ./models/loras/sd_xl_offset_example-lora_1.0.safetensors
 2AD54BFCAC62F2D8F0BB90F9F25B82AAE864A24556ABA0F781A3D7BA82B8D426  ./models/loras/hand 4.safetensors
-----------------------------------------------------------------  ./models/loras/RealNylonFeets_XL.safetensors
-----------------------------------------------------------------  ./models/loras/RealPantyhose_XL.safetensors
-----------------------------------------------------------------  ./models/loras/feet v3.safetensors
+3204C7D55600BC7834D4216FD102CDB961F130DA545D51854416EB34E7D7CCE2  ./models/loras/RealNylonFeets_XL.safetensors
+AAC0AC7C72C09AF541B4E150D2262E49F21BD9AA4E5765D66C8A129ACCAFA94A  ./models/loras/RealPantyhose_XL.safetensors
+945760630BFF27DC7FD792E780C8C2BB5C9ED4DDFE34F5C09E77AF50BDC4C585  ./models/loras/feet v3.safetensors
 11e7dbe52a73f66e701c1faa77b8a2cb0ee3abd721e1cae31123f5b299093435  ./models/controlnet/control_v11e_sd15_ip2p_fp16.safetensors
 8cc77ae071888abefd6e80bafce3d2574f9f6f8aac7ab205db98fb12a53c1132  ./models/controlnet/control_v11e_sd15_shuffle_fp16.safetensors
 8932b66e15aae835b3490dbf989f56c253104cee08a88bf21283762f557c9f10  ./models/controlnet/control_v11p_sd15_canny_fp16.safetensors
@@ -33,7 +33,6 @@ cf741a672fc3f753956260cb16101250f16c3c5bb3690a3d736bef66eafa7515  ./models/contr
 b0bf3c163b6f578b3a73e9cf61c3e4219ae9c2a06903663205d1251cf2498925  ./models/controlnet/control-lora-recolor-rank256.safetensors
 559d2468951bf254c13bacd9c5d05d01ad67b060f6a73e8131d26ebf459c1c79  ./models/controlnet/control-lora-depth-rank256.safetensors
 21f79f7368eff07f57bcd507ca91c0fc89070d7da182960ff24ed1d58310c3a7  ./models/controlnet/control-lora-canny-rank256.safetensors
-----------------------------------------------------------------  ./models/upscale_models/RealESRGAN_x4plus.pth
+4fa0d38905f75ac06eb49a7951b426670021be3018265fd191d2125df9d682f1  ./models/upscale_models/RealESRGAN_x4plus.pth
 c830d067d54fc767b9543a8432f36d91bc2de313584e8bbfe4ac26a47339e899  ./models/upscale_models/RealESRGAN_x2.pth
 aa00f09ad753d88576b21ed977e97d634976377031b178acc3b5b238df463400  ./models/upscale_models/RealESRGAN_x4.pth
-

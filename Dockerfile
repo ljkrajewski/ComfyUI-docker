@@ -1,35 +1,34 @@
 ### Filename: Dockerfile
+# Based on https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/scripts/install-comfyui-venv-linux.sh
 FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
 ARG BASEDIR=/usr/src
 ARG COMFYDIR=$BASEDIR/ComfyUI
-ARG LISTENPORT=8188
+#ARG LISTENPORT=8188
 
 # Update image, install tools, & download ComfyUI from Github
 WORKDIR $BASEDIR
 RUN apt update && \
     apt upgrade -y && \
     apt install git curl wget python3 python3-pip -y && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
     git clone https://github.com/comfyanonymous/ComfyUI
+WORKDIR $COMFYDIR/custom_nodes
+RUN git clone https://github.com/ltdrdata/ComfyUI-Manager
 
 ## Copy models
 WORKDIR $COMFYDIR
 COPY models models
 
 ## Install dependencies
-WORKDIR $COMFYDIR
 RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121 && \
-    pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
-# RUN pip3 install --upgrade torch torchvision torchaudio && \
-#     pip3 install xformers!=0.0.18 -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121 --extra-index-url https://download.pytorch.org/whl/cu118 --extra-index-url https://download.pytorch.org/whl/cu117  && \
-#     pip3 install accelerate && \
-#     pip3 install einops transformers>=4.25.1 safetensors>=0.3.0 aiohttp pyyaml Pillow scipy tqdm psutil  && \
-#     pip3 install torchsde
-#    pip3 install torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  && \
-   
+    pip install -r requirements.txt && \
+    pip install -r custom_nodes/ComfyUI-Manager/requirements.txt
+
 ## Install custom nodes
 # TO DO
 
 ## Start ComfyUI
 WORKDIR $COMFYDIR
-EXPOSE $LISTENPORT   # Remember to use the '-p 80:8818' or '-P' flag with your 'docker run' command.
-CMD python3 main.py --listen --port $LISTENPORT
+EXPOSE $LISTENPORT   
+# Remember to use the '-p 80:8818' or '-P' flag with your 'docker run' command.
+CMD python main.py --preview-method auto --listen --port 8188

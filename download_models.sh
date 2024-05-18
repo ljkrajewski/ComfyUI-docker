@@ -86,5 +86,5 @@ dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGA
 dlFromWeb 'https://huggingface.co/sberbank-ai/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth'
 
 # Verify Downloads
-#cd $BASEDIR/models/
-#sha256sum -c models.sha256
+cd $BASEDIR
+sha256sum -c models.sha256
